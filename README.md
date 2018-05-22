@@ -1,10 +1,10 @@
 # ngs-main-wes
-This is a Dockerize "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is refer to GATK best practice.
+This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is refer to GATK best practice.
 
 ## Prepare env:
-1. git clone to your main project directory (ex. OSCC)
-2. put "ngs-main-wes.py" and "NGStools.py" in your main project directory (ex. OSCC)
-3. prepare your own raw data in sub project directory (ex. 66xWES)
+1 git clone to your main project directory (ex. OSCC)
+2 put "ngs-main-wes.py" and "NGStools.py" in your main project directory (ex. OSCC)
+3 prepare your own raw data in sub project directory (ex. 66xWES)
 
 ## Usage: 
 #### modify in "ngs-main-wes.py"
