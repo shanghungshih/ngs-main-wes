@@ -32,8 +32,8 @@ def rawdataRename():
                 normal = patient+'N'+prefix.split(' ')[1]
                 tumor = patient+'T'+prefix.split(' ')[1]
 
-            os.system('mv ../%s/%s ../%s/%s' %(subproject, normal, subproject, new_normal))
-            os.system('mv ../%s/%s ../%s/%s' %(subproject, tumor, subproject, new_tumor))
+            os.system('mv %s/%s %s/%s' %(subproject, normal, subproject, new_normal))
+            os.system('mv %s/%s %s/%s' %(subproject, tumor, subproject, new_tumor))
         print('>>>>>> %s have been rename.' %(total_1))
 
 def enterData():
