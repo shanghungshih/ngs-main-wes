@@ -55,31 +55,19 @@ def NGSMainWESgetID(refPath, refGenome, dbsnp):
                 return mainID, mainBox
 
 def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp):
-    if os.path.exists('NGSMainWESid.txt') is False:
+    if os.path.exists(refPath+'/'+refGenome) is False or os.path.exists(refPath+'/'+dbsnp) is False:
         print('>>>>>> deploying adgh456/ngs-main:wes in deamon...')
         cmd = 'sudo docker run -i -d -v /var/run/docker.sock:/var/run/docker.sock -v '+refPath+':/ref_data -v '+scriptsPath+':/scripts -i adgh456/ngs-main:wes '
         os.system(cmd)
         os.system('sudo docker ps -l > NGSMainWESid.txt')
         mainID, mainBox = NGSMainWESgetID(refPath, refGenome, dbsnp)
-        if os.path.exists(refPath+'/'+refGenome) is False or os.path.exists(refPath+'/'+dbsnp) is False:
-            print('>>>>>> download reference...')
-            os.system(mainBox+"/bin/bash -c 'mv /box_ref_data/* /ref_data'")
-        else:
-            print('>>>>>> reference already exist')
+        print('>>>>>> download reference...')
+        os.system(mainBox+"/bin/bash -c 'mv /box_ref_data/* /ref_data'")
         print('>>>>>> download scripts...')
         os.system(mainBox+"/bin/bash -c 'mv /box_scripts/* /scripts'")
         os.system('sudo docker rm -f '+mainID)
     else:
-        print('>>>>>> adgh456/ngs-main:wes already exist')
-        mainID, mainBox = NGSMainWESgetID(refPath, refGenome, dbsnp)
-        if os.path.exists(refPath+'/'+refGenome) is False or os.path.exists(refPath+'/'+dbsnp) is False:
-            print('>>>>>> download reference...')
-            os.system(mainBox+"/bin/bash -c 'mv /box_ref_data/* /ref_data'")
-        else:
-            print('>>>>>> reference already exist')
-        print('>>>>>> download scripts...')
-        os.system(mainBox+"/bin/bash -c 'mv /box_scripts/* /scripts'")
-        os.system('sudo docker rm -f '+mainID)
+        print('>>>>>> reference already exist')
 
 ###docker command
 def afterQC(localPath, argv):
