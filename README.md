@@ -8,12 +8,21 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 
 ## Usage: 
 #### python3 ngs-main-wes.py
+#### Customizable：
+1. genome coordinate：ucsc.hg19.fasta
+2. dbSNP：dbsnp_138.hg19.vcf
+3. COSMIC：CosmicAllMutsHeaderSorted.vcf
+＊ multi-thread：p = Pool(15)
+
+
 - rawdataRename: rename raw data directory (ex. OC_631N to 631N)
 - enterData: input patient ID (for parallel processing)
+
 
 - CheckDir: mkdir ref_data (for reference and intermediate file), data (for storage)
 - NGSMainWES: copy reference (ucsc.hg19.fasta, dbsnp_138.hg19.vcf, 'CosmicAllMutsHeaderSorted.vcf) to ref_data
 - ReferenceIndex: build index for reference with samtools
+
 
 - MergeFastq: merge multiple fastq into one (N.fq1, N.fq2, T.fq1, T.fq2)
 - AfterQC: trimming raw fastq data with Afterqc (auto trimming), and produce a QC report
