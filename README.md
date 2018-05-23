@@ -9,10 +9,10 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 ## Usage: 
 ### python3 ngs-main-wes.py
 ##### Customizable：
-1. genome coordinate：ucsc.hg19.fasta
-2. dbSNP：dbsnp_138.hg19.vcf
-3. COSMIC：CosmicAllMutsHeaderSorted.vcf
-＊ multi-thread：p = Pool(15)
+- genome coordinate：ucsc.hg19.fasta
+- dbSNP：dbsnp_138.hg19.vcf
+- COSMIC：CosmicAllMutsHeaderSorted.vcf
+- multi-thread：p = Pool(15)
 
 #### Function：
 - rawdataRename: rename raw data directory (ex. OC_631N to 631N)
