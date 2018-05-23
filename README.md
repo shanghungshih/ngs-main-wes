@@ -7,14 +7,14 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 3. prepare your own raw data in sub project directory (ex. 66xWES)
 
 ## Usage: 
-#### python3 ngs-main-wes.py
-#### Customizable：
+### python3 ngs-main-wes.py
+##### Customizable：
 1. genome coordinate：ucsc.hg19.fasta
 2. dbSNP：dbsnp_138.hg19.vcf
 3. COSMIC：CosmicAllMutsHeaderSorted.vcf
 ＊ multi-thread：p = Pool(15)
 
-
+#### Function：
 - rawdataRename: rename raw data directory (ex. OC_631N to 631N)
 - enterData: input patient ID (for parallel processing)
 
