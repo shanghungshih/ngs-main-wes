@@ -255,7 +255,7 @@ def Mutect2(refPath, fasta, projectN, projectT, project):
     gatk4(refPath, 'gatk Mutect2 -R data/'+fasta+'.fasta -I data/'+projectT+'.recal_reheader.bam -tumor '+projectT+' -I data/'+projectN+'.recal_reheader.bam -normal '+projectN+' -O data/'+project+'.somatic.vcf.gz')
 
 def Mutect2_v3(refPath, fasta, projectN, projectT, project, cosmic, dbsnp):
-    gatk3(refPath, 'gatk mutect2 -R data/'+fasta+'.fasta -I:tumor data/'+projectT+'.recal_reheader.bam -I:normal data/'+projectN+'.recal_reheader.bam --cosmic data/'+cosmic+' --dbsnp data/'+dbsnp+' --contamination_fraction_to_filter 0.02 -o data/'+project+'.mutect2.vcf')
+    gatk3(refPath, 'gatk -T MuTect2 -R data/'+fasta+'.fasta -I:tumor data/'+projectT+'.recal_reheader.bam -I:normal data/'+projectN+'.recal_reheader.bam --cosmic data/'+cosmic+' --dbsnp data/'+dbsnp+' --contamination_fraction_to_filter 0.02 -o data/'+project+'.mutect2.vcf')
 
 def CheckVcf(refPath, subproject, project, storePath):
     if os.path.exists('ref_data/'+project+'.somatic.vcf.gz') is True:
