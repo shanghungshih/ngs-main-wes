@@ -17,9 +17,9 @@ def getID():
         with open('getID.txt', 'r') as f:
             for i in f.readlines():
                 if i.split(' ')[-1:][0].replace('\n', '').endswith('T') is True:
-                    name.append(int(i.split(' ')[-1:][0].replace('\n', '').replace('T', '')))
+                    name.append(i.split(' ')[-1:][0].replace('\n', '').replace('T', ''))
         out = ('%s' %(name))
-        print(out.replace('[', '').replace(']', ''))
+        print(out.replace('[', '').replace(']', '').replace("'", ""))
         os.system('rm getID.txt')
 
 def rawdataRename():
