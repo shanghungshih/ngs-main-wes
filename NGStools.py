@@ -61,6 +61,16 @@ def enterData():
     work = tuple(work)
     return work
 
+def ReferenceIndex(refPath, fasta, dbsnp, cosmic):
+    if os.path.exists('ref_data/'+fasta+'.fasta.fa') is False:
+        bwa(refPath, 'bwa index '+fasta+'.fasta')
+    if os.path.exists('ref_data/'+fasta+'.fasta.fai') is False:
+        samtools(refPath, 'samtools faidx '+fasta+'.fasta')
+    if os.path.exists('ref_data/'+fasta+'.dict') is False:
+        picard(refPath, 'java -jar picard.jar CreateSequenceDictionary R=data/'+fasta+'.fasta O=data/'+fasta+'.dict')
+    if os.path.exists('ref_data/'+dbsnp+'.idx') is False:
+        gatk4(refPath, 'gatk IndexFeatureFile -F data/'+dbsnp)
+
 def NGSMainWESgetID(refPath, refGenome, dbsnp):
     with open('NGSMainWESid.txt', 'r') as f:
         for i in f.readlines():
@@ -69,8 +79,8 @@ def NGSMainWESgetID(refPath, refGenome, dbsnp):
                 mainBox = "sudo docker exec "+mainID+' '
                 return mainID, mainBox
 
-def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp):
-    if os.path.exists(refPath+'/'+refGenome+'.fasta') is False or os.path.exists(refPath+'/'+dbsnp) is False:
+def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp, cosmic):
+    if os.path.exists(refPath+'/'+refGenome+'.fasta') is False or os.path.exists(refPath+'/'+dbsnp) is False or os.path.exists(refPath+'/'+cosmic) is False:
         print('>>>>>> deploying adgh456/ngs-main:wes in deamon...')
         cmd = 'sudo docker run -i -d -v /var/run/docker.sock:/var/run/docker.sock -v '+refPath+':/ref_data -v '+scriptsPath+':/scripts -i adgh456/ngs-main:wes '
         os.system(cmd)
@@ -81,6 +91,8 @@ def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp):
         print('>>>>>> download scripts...')
         os.system(mainBox+"/bin/bash -c 'mv /box_scripts/* /scripts'")
         os.system('sudo docker rm -f '+mainID)
+        ReferenceIndex(refPath, refGenome, dbsnp, cosmic)
+
     else:
         print('>>>>>> reference already exist')
 
@@ -200,16 +212,6 @@ def MergeFastq(pathN, pathT, project, mainPath, storePath):
         
         os.chdir(mainPath)
                 
-def ReferenceIndex(refPath, fasta, dbsnp, cosmic):
-    if os.path.exists('ref_data/'+fasta+'.fasta.fa') is False:
-        bwa(refPath, 'bwa index '+fasta+'.fasta')
-    if os.path.exists('ref_data/'+fasta+'.fasta.fai') is False:
-        samtools(refPath, 'samtools faidx '+fasta+'.fasta')
-    if os.path.exists('ref_data/'+fasta+'.dict') is False:
-        picard(refPath, 'java -jar picard.jar CreateSequenceDictionary R=data/'+fasta+'.fasta O=data/'+fasta+'.dict')
-    if os.path.exists('ref_data/'+dbsnp+'.idx') is False:
-        gatk4(refPath, 'gatk IndexFeatureFile -F data/'+dbsnp)
-
 def AfterQC(threshold, pathN, pathT, project, refPath, storePath):
     afterQC(pathN, 'pypy after.py -f0 -t0 -q '+str(threshold)+' -g /AfterQC/data -r /AfterQC/data -1 /AfterQC/data/'+project+'N_1.fq.gz -2 /AfterQC/data/'+project+'N_2.fq.gz')
     afterQC(pathT, 'pypy after.py -f0 -t0 -q '+str(threshold)+' -g /AfterQC/data -r /AfterQC/data -1 /AfterQC/data/'+project+'T_1.fq.gz -2 /AfterQC/data/'+project+'T_2.fq.gz')
