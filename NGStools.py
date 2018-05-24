@@ -19,6 +19,7 @@ def getID():
                 if i.split(' ')[-1:][0].replace('\n', '').endswith('T') is True:
                     name.append(i.split(' ')[-1:][0].replace('\n', '').replace('T', ''))
         out = ('%s' %(name))
+        print('total patient of %s : %s' %(path, len(name)))
         print(out.replace('[', '').replace(']', '').replace("'", ""))
         os.system('rm getID.txt')
 
@@ -69,7 +70,7 @@ def NGSMainWESgetID(refPath, refGenome, dbsnp):
                 return mainID, mainBox
 
 def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp):
-    if os.path.exists(refPath+'/'+refGenome) is False or os.path.exists(refPath+'/'+dbsnp) is False:
+    if os.path.exists(refPath+'/'+refGenome+'.fasta') is False or os.path.exists(refPath+'/'+dbsnp) is False:
         print('>>>>>> deploying adgh456/ngs-main:wes in deamon...')
         cmd = 'sudo docker run -i -d -v /var/run/docker.sock:/var/run/docker.sock -v '+refPath+':/ref_data -v '+scriptsPath+':/scripts -i adgh456/ngs-main:wes '
         os.system(cmd)
