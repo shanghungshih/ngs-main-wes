@@ -63,8 +63,7 @@ def work_log(work_data):
     p1 = somaticWES(os.getcwd(), work_data[0], work_data[1])
     print('>>>>>> start: subProject=%s , patient=%s.' %(work_data[0], work_data[1]))
     NGStools.CheckDir(p1.mainPath, p1.dataPath, p1.project)
-    NGStools.NGSMainWES(p1.refPath, p1.scriptsPath, p1.refGenome, p1.dbsnp)
-    NGStools.ReferenceIndex(p1.refPath, p1.refGenome, p1.dbsnp, p1.cosmic)
+    NGStools.NGSMainWES(p1.refPath, p1.scriptsPath, p1.refGenome, p1.dbsnp, p1.cosmic)
 
     NGStools.MergeFastq(p1.rawdataPath+'/'+p1.project_N, p1.rawdataPath+'/'+p1.project_T, p1.project, p1.mainPath, p1.storePath)
     NGStools.AfterQC(30, p1.rawdataPath+'/'+p1.project_N, p1.rawdataPath+'/'+p1.project_T, p1.project, p1.refPath, p1.storePath)
