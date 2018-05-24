@@ -8,6 +8,20 @@ Created on Thu May 10 11:42:21 2018
 import os
 
 ###main docker run in deamon
+def getID():
+    yn = input('Get all patient ID of sub directory?(Y/n) (ex. y): ')
+    if yn.strip().lower() == 'y':
+        path = input('Please enter the directory name (ex. 66xWES): ')
+        os.system('ls -lt %s > getID.txt' %(path))
+        name = []
+        with open('getID.txt', 'r') as f:
+            for i in f.readlines():
+                if i.split(' ')[-1:][0].replace('\n', '').endswith('T') is True:
+                    name.append(i.split(' ')[-1:][0].replace('\n', '').replace('T', ''))
+        out = ('%s' %(name))
+        print(out.replace('[', '').replace(']', ''))
+        os.system('rm getID.txt')
+
 def rawdataRename():
     argv = input('Do you want to rename your rawdata directory?(Y/n) (ex. y): ')
     argv = argv.lower()
@@ -38,7 +52,7 @@ def rawdataRename():
 
 def enterData():
     subproject = input('Please enter your subproject name (ex. 66xWES): ').strip()
-    patient = input('Please enter your patient ID (ex. 599, 631, 632, 652): ').split(',')
+    patient = input('Please enter patient ID to add in analysis queue (ex. 599, 631, 632, 652): ').split(',')
 
     work = []
     for i in patient:
