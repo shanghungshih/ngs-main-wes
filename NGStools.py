@@ -151,6 +151,9 @@ def meerkat(localPath, argv):
     cmd = 'docker run --rm -v '+localPath+':/app/ref_data -i adgh456/meerkat:v0.189 '+argv
     os.system(cmd)
 
+def msisensor(localPath, argv):
+    cmd = 'docker run --rm -v '+localPath+':/data -i adgh456/msisensor:0.2 '+argv
+    os.system(cmd)
 
 ###NGS analysis
 def CheckDir(*path):
@@ -261,6 +264,11 @@ def Mutect2(refPath, fasta, projectN, projectT, project):
 
 def Mutect2_v3(refPath, fasta, projectN, projectT, project, cosmic, dbsnp):
     gatk3(refPath, 'gatk -T MuTect2 -R data/'+fasta+'.fasta -I:tumor data/'+projectT+'.recal_reheader.bam -I:normal data/'+projectN+'.recal_reheader.bam --cosmic data/'+cosmic+' --dbsnp data/'+dbsnp+' --contamination_fraction_to_filter 0.02 -o data/'+project+'.mutect2.vcf')
+
+def MSIsensor(refPath, fasta, projectN, projectT, project, bed, target):
+    if os.path.exists(target) is False:
+        msisensor(refPath, 'msisensor scan -d data/'+fasta+'.fasta -o data/'+fasta+'.microsatellites.list')
+    msisensor(refPath, 'msisensor msi -d data/'+fasta+'.microsatellites.list -n data/'+projectN+'.recal_reheader.bam -t data/'+projectT+'.recal_reheader.bam -e data/'+bed+' -o data/msi.'+project)
 
 def CheckVcf(refPath, subproject, project, storePath):
     if os.path.exists('ref_data/'+project+'.somatic.vcf.gz') is True:
