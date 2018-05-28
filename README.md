@@ -36,4 +36,5 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 - CheckVcf: record result (good_report.txt or bad_report.txt)
 - CreatePONforCNV: create PON of CNV
 - CNV: call copy number variant with GATK4 1.0.0.0.alpha
+- MSIsensor: microsatellite instability
 - Phial: clinical FDA drug relevence annotation
