@@ -82,7 +82,7 @@ def NGSMainWESgetID(refPath, refGenome, dbsnp):
 def NGSMainWES(refPath, scriptsPath, refGenome, dbsnp, cosmic):
     if os.path.exists(refPath+'/'+refGenome+'.fasta') is False or os.path.exists(refPath+'/'+dbsnp) is False or os.path.exists(refPath+'/'+cosmic) is False:
         print('>>>>>> deploying adgh456/ngs-main:wes in deamon...')
-        cmd = 'sudo docker run -i -d -v /var/run/docker.sock:/var/run/docker.sock -v '+refPath+':/ref_data -v '+scriptsPath+':/scripts -i adgh456/ngs-main:wes '
+        cmd = 'sudo docker run -i -d -v /var/run/docker.sock:/var/run/docker.sock -v '+refPath+':/ref_data -v '+scriptsPath+':/scripts -i adgh456/ngs-main:wes_v2 '
         os.system(cmd)
         os.system('sudo docker ps -l > NGSMainWESid.txt')
         mainID, mainBox = NGSMainWESgetID(refPath, refGenome, dbsnp)
