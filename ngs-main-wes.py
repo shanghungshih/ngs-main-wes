@@ -28,6 +28,7 @@ class somaticWES:
         self.refGenome = 'ucsc.hg19'
         self.dbsnp = 'dbsnp_138.hg19.vcf'
         self.cosmic = 'CosmicAllMutsHeaderSorted.vcf'
+        self.seq_bed = 'agilent_region_OSCC_hg19_rmheader.bed'
         
         ###dir no need to modify
         self.rawdataPath = mainPath+'/'+dataPath
@@ -74,6 +75,7 @@ def work_log(work_data):
     NGStools.CreatePONforMutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
     NGStools.Mutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
     NGStools.Mutect2_v3(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.cosmic, p1.dbsnp)
+    NGStools.MSIsensor(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.seq_bed)
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
 
     endTime = time.time()
