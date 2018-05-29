@@ -49,6 +49,7 @@ class somaticWES:
         self.boxScriptsPath = '/scripts'
 
 ###help(somaticWES)
+#NGStools.rmSAM()
 
 ######rawdataPreprocess
 NGStools.getID()
