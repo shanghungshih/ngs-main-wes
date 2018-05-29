@@ -51,10 +51,10 @@ class somaticWES:
 ###help(somaticWES)
 
 ######rawdataPreprocess
+NGStools.getID()
 NGStools.rawdataRename()
 
 ######enterData
-NGStools.getID()
 work = NGStools.enterData()
 
 ######multiprocessing
