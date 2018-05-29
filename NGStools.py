@@ -277,7 +277,7 @@ def MSIsensor(refPath, fasta, projectN, projectT, project, bed):
 def CheckVcf(refPath, subproject, project, storePath):
     if os.path.exists('ref_data/'+project+'.somatic.vcf.gz') is True:
         os.system('echo %s/%s >> good_report.txt' %(subproject, project))
-        os.system('mv %s/%s* %s/%s' %(refPath, project, storePath, project))
+        os.system('mv %s/%s* %s/msi.%s* %s/%s' %(refPath, project, refPath, project, storePath, project))
     elif os.path.exists('ref_data/'+project+'.somatic.vcf.gz') is False:
         os.system('echo %s/%s >> bad_report.txt' %(subproject, project))
         
