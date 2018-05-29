@@ -27,7 +27,6 @@ def rawdataRename():
     argv = input('Do you want to rename your rawdata directory?(Y/n) (ex. y): ')
     argv = argv.lower()
     if argv == 'y':
-        getID()
         subproject = input('Please enter folder to be modified (ex. 66xWES): ')
         total = input('Please enter name to be modified (ex. OC_712, OC_512, OC_345): ')
         prefix = input('Please enter head -h or tail -t (ex. -h OC_): ')
