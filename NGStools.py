@@ -36,18 +36,19 @@ def rawdataRename():
         for patient in total_1:
             patient = patient.strip()
 
-            new_normal = patient+'N'
-            new_tumor = patient+'T'
-
             if prefix.split(' ')[0].split('-')[1] == 'h':
                 patient = patient.split(prefix.split(' ')[1])[1]
                 normal = prefix.split(' ')[1]+patient+'N'
                 tumor = prefix.split(' ')[1]+patient+'T'
+                new_normal = patient+'N'
+                new_tumor = patient+'T'
 
             elif prefix.split(' ')[0].split('-')[1] == 't':
                 patient = patient.split(prefix.split(' ')[1])[0]
                 normal = patient+'N'+prefix.split(' ')[1]
                 tumor = patient+'T'+prefix.split(' ')[1]
+                new_normal = patient+'N'
+                new_tumor = patient+'T'
 
             os.system('mv %s/%s %s/%s' %(subproject, normal, subproject, new_normal))
             os.system('mv %s/%s %s/%s' %(subproject, tumor, subproject, new_tumor))
