@@ -12,6 +12,7 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 - genome coordinate：ucsc.hg19.fasta
 - dbSNP：dbsnp_138.hg19.vcf
 - COSMIC：CosmicAllMutsHeaderSorted.vcf
+- seq_bed: agilent_region_OSCC_hg19_rmheader.bed
 - multi-thread：p = Pool(15)
 
 #### Function：
