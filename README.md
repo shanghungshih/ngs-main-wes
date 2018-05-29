@@ -15,6 +15,9 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 - multi-thread：p = Pool(15)
 
 #### Function：
+- rmSAM: remove sam & sai file to release disk space
+
+
 - rawdataRename: rename raw data directory (ex. OC_631N to 631N)
 - enterData: input patient ID (for parallel processing)
 
