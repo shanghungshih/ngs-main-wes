@@ -9,7 +9,7 @@ import os
 
 ###main docker run in deamon
 def getID():
-    yn = input('Get all patient ID of sub directory?(Y/n) (ex. y): ')
+    yn = input('Show all patient ID of sub directory?(Y/n) (ex. y): ')
     if yn.strip().lower() == 'y':
         path = input('Please enter the directory name (ex. 66xWES): ')
         os.system('ls -lt %s > getID.txt' %(path))
@@ -29,7 +29,7 @@ def rawdataRename():
     if argv == 'y':
         getID()
         subproject = input('Please enter folder to be modified (ex. 66xWES): ')
-        total = input('Please enter name to be modified (ex. 712, 512, 345): ')
+        total = input('Please enter name to be modified (ex. OC_712, OC_512, OC_345): ')
         prefix = input('Please enter head -h or tail -t (ex. -h OC_): ')
 
         total_1 = total.split(',')
@@ -41,10 +41,12 @@ def rawdataRename():
             new_tumor = patient+'T'
 
             if prefix.split(' ')[0].split('-')[1] == 'h':
+                patient = patient.split(prefix.split(' ')[1])[1]
                 normal = prefix.split(' ')[1]+patient+'N'
                 tumor = prefix.split(' ')[1]+patient+'T'
 
             elif prefix.split(' ')[0].split('-')[1] == 't':
+                patient = patient.split(prefix.split(' ')[1])[0]
                 normal = patient+'N'+prefix.split(' ')[1]
                 tumor = patient+'T'+prefix.split(' ')[1]
 
