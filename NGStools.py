@@ -152,7 +152,7 @@ def meerkat(localPath, argv):
     os.system(cmd)
 
 def msisensor(localPath, argv):
-    cmd = 'docker run --rm -v '+localPath+':/data -i adgh456/msisensor:0.2 '+argv
+    cmd = 'sudo docker run --rm -v '+localPath+':/data -i adgh456/msisensor:0.2 '+argv
     os.system(cmd)
 
 ###NGS analysis
