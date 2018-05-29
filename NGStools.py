@@ -19,7 +19,9 @@ def getID():
                 if i.split(' ')[-1:][0].replace('\n', '').endswith('T') is True:
                     name.append(i.split(' ')[-1:][0].replace('\n', '').replace('T', ''))
         out = ('%s' %(name))
-        print('total patient of %s : %s' %(path, len(name)))
+        print('>>>>>> total patient of %s : %s' %(path, len(name)))
+        print('>>>>>> minimum space for %s : %s T' %(path, len(name)*200*/1024))
+        os.system('df -h')
         print(out.replace('[', '').replace(']', '').replace("'", ""))
         os.system('rm getID.txt')
 def rmSAM():
