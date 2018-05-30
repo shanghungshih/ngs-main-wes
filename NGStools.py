@@ -177,8 +177,9 @@ def CheckDir(*path):
     
 def MergeFastq(pathN, pathT, project, mainPath, storePath):
     print('>>>>>> merging [%s] fastq...' %(project))
-    fastq_N1 = pathT+'/'+project+'N_1.fq.gz'
-    if os.path.exists(fastq_N1) is False:
+    fastq_N1 = pathN+'/'+project+'N_1.fq.gz'
+    fastq_T1 = pathT+'/'+project+'T_1.fq.gz'
+    if os.path.exists(fastq_N1) is False or os.path.exists(fastq_T1) is False:
         ###pathN
         os.chdir(pathN)
         os.system('rm -f *json *html')
