@@ -6,6 +6,7 @@ Created on Thu May 10 11:42:21 2018
 """
 
 import os
+import re
 
 ###main docker run in deamon
 def getID():
@@ -189,7 +190,7 @@ def MergeFastq(pathN, pathT, project, mainPath, storePath):
             fq_2 = ''
             n = []
             for i in f.readlines():
-                n.append(i.split(' ')[8])
+                n.append(i.split(re.findall(' [0-9][0-9]:[0-9][0-9]', i)[0]+' ')[1])
         for i in range(len(n)):
             if '1.clean.fq.gz' in n[i] or '1.fq.gz' in n[i]:
                 fq_1 += n[i].strip()+' '
