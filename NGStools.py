@@ -28,7 +28,7 @@ def getID():
 
 def getAllVCF():
     name = input('Please enter subproject: ')
-    anno = os.getcwd()+'/annotation'
+    anno = os.getcwd()+'/annotation/'+name
     cmd = ('cp data/%s/*/*vcf %s' %(name, anno))
     os.system(cmd)
         
