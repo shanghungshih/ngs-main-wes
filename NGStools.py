@@ -27,6 +27,7 @@ def getID():
         os.system('rm getID.txt')
 def rmSAM():
     os.system('rm data/*/*/*sam data/*/*/*sai')
+    print('>>>>>> all sam file have been removed.')
 
 def rawdataRename():
     argv = input('Do you want to rename your rawdata directory?(Y/n) (ex. y): ')
