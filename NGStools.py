@@ -31,7 +31,7 @@ def getVcfID():
     if yn.strip().lower() == 'y':
         path = input('Please enter the directory name (ex. annotation): ')
         wanted = input('Please enter the directory name (ex. .mutect2.vcf): ')
-        os.system('ls -lt %s > getID.txt' %(path))
+        os.system('ls -lt %s > getID.txt' %(os.path.join(os.getcwd(), path)))
         name = []
         with open('getID.txt', 'r') as f:
             for i in f.readlines():
