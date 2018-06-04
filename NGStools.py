@@ -26,6 +26,20 @@ def getID():
         print(out.replace('[', '').replace(']', '').replace("'", ""))
         os.system('rm getID.txt')
 
+def getVcfID():
+    yn = input('Show all patient ID of Vcf?(Y/n) (ex. y): ')
+    if yn.strip().lower() == 'y':
+        path = input('Please enter the directory name (ex. annotation): ')
+        wanted = input('Please enter the directory name (ex. .mutect2.vcf): ')
+        os.system('ls -lt %s > getID.txt' %(path))
+        name = []
+        with open('getID.txt', 'r') as f:
+            for i in f.readlines():
+                if i.split(' ')[-1:][0].replace('\n', '').endswith('vcf') is True:
+                    name.append(i.split(' ')[-1:][0].replace('\n', '').replace(wanted, ''))
+        print('>>>>>> total patient of %s : %s' %(path, len(name)))
+        os.system('rm getID.txt')
+        
 def getAllVCF():
     name = input('Please enter subproject: ')
     os.system('mkdir annotation')
@@ -33,6 +47,7 @@ def getAllVCF():
     anno = os.getcwd()+'/annotation/'+name
     cmd = ('cp data/%s/*/*vcf %s' %(name, anno))
     os.system(cmd)
+    getVcfID()
         
 def rmSAM():
     os.system('rm data/*/*/*sam data/*/*/*sai')
