@@ -28,6 +28,8 @@ def getID():
 
 def getAllVCF():
     name = input('Please enter subproject: ')
+    os.system('mkdir annotation')
+    os.system('mkdir %s' %(name))
     anno = os.getcwd()+'/annotation/'+name
     cmd = ('cp data/%s/*/*vcf %s' %(name, anno))
     os.system(cmd)
