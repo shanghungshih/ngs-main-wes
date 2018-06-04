@@ -7,7 +7,9 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 3. prepare your own raw data in sub project directory (ex. 66xWES)
 - - -
 ## Usage: 
-### python3 ngs-main-wes.py
+```python
+python3 ngs-main-wes.py
+```
 - - -
 ##### Customizable：
 - genome coordinate：ucsc.hg19.fasta
