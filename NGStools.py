@@ -25,6 +25,13 @@ def getID():
         os.system('df -h')
         print(out.replace('[', '').replace(']', '').replace("'", ""))
         os.system('rm getID.txt')
+
+def getAllVCF():
+    name = input('Please enter subproject: ')
+    anno = os.getcwd()+'annotation'
+    cmd = ('cp data/%s/*/*vcf %s' %(name, anno))
+    os.system(cmd)
+        
 def rmSAM():
     os.system('rm data/*/*/*sam data/*/*/*sai')
     print('>>>>>> all sam file have been removed.')
