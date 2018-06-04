@@ -5,16 +5,17 @@ This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is r
 1. git clone to your main project directory (ex. OSCC)
 2. put "ngs-main-wes.py" and "NGStools.py" in your main project directory (ex. OSCC)
 3. prepare your own raw data in sub project directory (ex. 66xWES)
-* * *
+- - -
 ## Usage: 
-  python3 ngs-main-wes.py
+### python3 ngs-main-wes.py
+- - -
 ##### Customizable：
 - genome coordinate：ucsc.hg19.fasta
 - dbSNP：dbsnp_138.hg19.vcf
 - COSMIC：CosmicAllMutsHeaderSorted.vcf
 - seq_bed: agilent_region_OSCC_hg19_rmheader.bed
 - multi-thread：p = Pool(15)
-
+- - -
 #### Function：
 - rmSAM: remove sam & sai file to release disk space
 
