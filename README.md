@@ -1,5 +1,6 @@
 # ngs-main-wes
 This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is refer to GATK best practice.
+- Notes : This scripts based on related path
 - - -
 ## Prepare env:
 1. git clone to your main project directory (ex. OSCC)
@@ -20,17 +21,15 @@ python3 ngs-main-wes.py
 - - -
 #### Function：
 - rmSAM: remove sam & sai file to release disk space
-
-
+- getAllVCF: copy all subproject vcf to mainDir/annotation
+- - -
 - rawdataRename: rename raw data directory (ex. OC_631N to 631N)
 - enterData: input patient ID (for parallel processing)
-
-
+- - -
 - CheckDir: mkdir ref_data (for reference and intermediate file), data (for storage)
 - NGSMainWES: copy reference (ucsc.hg19.fasta, dbsnp_138.hg19.vcf, 'CosmicAllMutsHeaderSorted.vcf) to ref_data
 - ReferenceIndex: build index for reference with samtools
-
-
+- - -
 - MergeFastq: merge multiple fastq into one (N.fq1, N.fq2, T.fq1, T.fq2)
 - AfterQC: trimming raw fastq data with Afterqc (auto trimming), and produce a QC report
 - FastqtoSam: align fastq reads to reference genome with BWA, and produce sam file
@@ -45,3 +44,6 @@ python3 ngs-main-wes.py
 - CNV: call copy number variant with GATK4 1.0.0.0.alpha
 - MSIsensor: microsatellite instability
 - Phial: clinical FDA drug relevence annotation
+(based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
+- ParaSNP: scoring variants in vcf
+(based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
