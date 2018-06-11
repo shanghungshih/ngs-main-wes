@@ -80,7 +80,9 @@ def work_log(work_data):
     NGStools.Mutect2_v3(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.cosmic, p1.dbsnp)
     NGStools.MSIsensor(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.seq_bed)
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
-
+    
+    #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
+    
     endTime = time.time()
     print('>>>>>> TotalTimeUse for subproject=%s , patient=%s : %s sec' %(work_data[0], work_data[1], endTime-startTime))
 
