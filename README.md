@@ -2,6 +2,7 @@
 This is a Dockerized "somatic paired-WES(Normal-Tumor) hg19 pipeline" which is refer to GATK best practice.
 - Notes : This scripts based on related path
 - - -
+- Flow chart
 ![image](https://github.com/shanghungshih/ngs-main-wes/blob/master/Guide.png)
 - - -
 ## Prepare env:
