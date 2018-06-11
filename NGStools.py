@@ -325,7 +325,7 @@ def CNV(self):
 def Phial(refPath, subproject, project):
     phial(refPath, 'perl phial_analysis.pl '+subproject+' '+project)
 
-def ParaSNP(storePath, subproject, project):
+def ParaSNP(storePath, project):
     num = project
     in_name = os.path.join(storePath, num+'.mutect2.filter.vcf')
     out_name = os.path.join(storePath, num+'.paraSNP.vcf')
