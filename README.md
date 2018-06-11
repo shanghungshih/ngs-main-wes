@@ -46,4 +46,3 @@ python3 ngs-main-wes.py
 - Phial: clinical FDA drug relevence annotation
 (based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
 - ParaSNP: scoring variants in vcf
-(based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
