@@ -188,6 +188,10 @@ def msisensor(localPath, argv):
     cmd = 'sudo docker run --rm -v '+localPath+':/data -i adgh456/msisensor:0.2 '+argv
     os.system(cmd)
 
+def phial(localPath, argv):
+    cmd = 'sudo docker run --rm -v '+localPath+':/data -i adgh456/phial:v1.0 '+argv
+    os.system(cmd)
+
 ###NGS analysis
 def CheckDir(*path):
     p1 = path[0]+'/data'
@@ -318,5 +322,5 @@ def CreatePONforCNV(self):
 def CNV(self):
     pass
     
-def Phial(self):
-    pass
+def Phial(refPath, subproject, project):
+    phial(refPath, 'perl phial_analysis.pl '+subproject+' '+project)
