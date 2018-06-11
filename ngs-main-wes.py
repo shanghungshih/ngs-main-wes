@@ -51,7 +51,6 @@ class somaticWES:
 ###help(somaticWES)
 #NGStools.rmSAM()
 #NGStools.getAllVCF()
-#NGStools.Phial()
 
 ######rawdataPreprocess
 NGStools.getID()
@@ -82,6 +81,7 @@ def work_log(work_data):
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
     
     #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
+    #NGStools.ParaSNP(os.path.join(p1.storePath, p1.project), p1.project)
     
     endTime = time.time()
     print('>>>>>> TotalTimeUse for subproject=%s , patient=%s : %s sec' %(work_data[0], work_data[1], endTime-startTime))
