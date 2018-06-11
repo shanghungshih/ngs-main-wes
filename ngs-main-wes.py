@@ -51,6 +51,7 @@ class somaticWES:
 ###help(somaticWES)
 #NGStools.rmSAM()
 #NGStools.getAllVCF()
+#NGStools.Phial()
 
 ######rawdataPreprocess
 NGStools.getID()
