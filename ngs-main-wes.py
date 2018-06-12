@@ -65,6 +65,7 @@ def work_log(work_data):
 
     p1 = somaticWES(os.getcwd(), work_data[0], work_data[1])
     print('>>>>>> start: subProject=%s , patient=%s.' %(work_data[0], work_data[1]))
+    
     NGStools.CheckDir(p1.mainPath, p1.dataPath, p1.project)
     NGStools.NGSMainWES(p1.refPath, p1.scriptsPath, p1.refGenome, p1.dbsnp, p1.cosmic)
 
@@ -78,6 +79,7 @@ def work_log(work_data):
     NGStools.Mutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
     NGStools.Mutect2_v3(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.cosmic, p1.dbsnp)
     NGStools.MSIsensor(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.seq_bed)
+    
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
     
     #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
