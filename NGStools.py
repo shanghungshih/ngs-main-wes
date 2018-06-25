@@ -308,7 +308,7 @@ def BaseRecalibrator(refPath, fasta, projectN, projectT, dbsnp):
     os.system('samtools view -H ref_data/'+projectT+".recal.bam | sed 's/SM:sample/SM:"+projectT+"/' | samtools reheader - ref_data/"+projectT+'.recal.bam > ref_data/'+projectT+'.recal_reheader.bam')
     samtools(refPath, 'samtools index '+projectT+'.recal_reheader.bam')
     
-def CreatePONforMutect2(refPath, fasta, projectN, projectT, project):
+def NormalforPONsOfMutect2(refPath, fasta, projectN, projectT, project):
     gatk4(refPath, 'gatk Mutect2 -R data/'+fasta+'.fasta -I data/'+projectN+'.recal_reheader.bam -tumor '+projectN+' -O data/'+projectN+'_for_pon.vcf.gz')
     os.system('echo /gatk/data/'+projectN+'_for_pon.vcf.gz >> ref_data/normals_for_pon_vcf.args')
 
@@ -383,4 +383,9 @@ def ParaSNP(storePath, num, mainBox):
     os.system(mainBox+'Rscript ParsSNP_application.r {}.hg19_multianno.txt'.format(num))
     os.system(mainBox+'mv ParsSNP.output.{}.hg19_multianno.txt /data/{}'.format(num, num))
     os.system('mv {}/ParsSNP.output.{}.hg19_multianno.txt {}/{}.hg19_multianno.ParsSNP.output.txt'.format(storePath, num, storePath, num))
-    
+
+def CreatePONforMutect2(refPath, subproject):
+    gatk4(refPath, 'gatk CreateSomaticPanelOfNormals --output data/%s_SomaticPONs.vcf --vcfs data/normals_for_pon_vcf.args' %(subproject))
+
+def Mutect2_PONs(refPath, fasta, projectN, projectT, project, subproject, gnomad, af=0.00003125):
+    gatk4(refPath, 'gatk Mutect2 -R data/%s.fasta -I data/%s.recal_reheader.bam -tumor %s -I data/%s.recal_reheader.bam -normal %s --germline-resource data/%s --af-of-alleles-not-in-resource %s --panel-of-normals data/%s_SomaticPONs.vcf -O data/%s.somaticPONs.vcf' %(fasta, projectT, projectT, projectN, projectN, gnomad, af, subproject, project))
