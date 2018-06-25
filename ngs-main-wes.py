@@ -25,6 +25,7 @@ class somaticWES:
         self.project = project
         
         ### reference   ###ftp://ftp.broadinstitute.org/bundle/
+        self.tag = 'wes_v3'
         self.refGenome = 'ucsc.hg19'
         self.dbsnp = 'dbsnp_138.hg19.vcf'
         self.cosmic = 'CosmicAllMutsHeaderSorted.vcf'
@@ -69,7 +70,7 @@ def work_log(work_data):
     
     ######
     NGStools.CheckDir(p1.mainPath, p1.dataPath, p1.project)
-    NGStools.NGSMainWES(p1.refPath, p1.scriptsPath, p1.refGenome, p1.dbsnp, p1.cosmic)
+    NGStools.NGSMainWES(p1.refPath, p1.scriptsPath, p1.refGenome, p1.dbsnp, p1.cosmic, p1.tag)
 
     NGStools.MergeFastq(p1.rawdataPath+'/'+p1.project_N, p1.rawdataPath+'/'+p1.project_T, p1.project, p1.mainPath, p1.storePath)
     NGStools.AfterQC(30, p1.rawdataPath+'/'+p1.project_N, p1.rawdataPath+'/'+p1.project_T, p1.project, p1.refPath, p1.storePath)
