@@ -29,6 +29,7 @@ class somaticWES:
         self.refGenome = 'ucsc.hg19'
         self.dbsnp = 'dbsnp_138.hg19.vcf'
         self.cosmic = 'CosmicAllMutsHeaderSorted.vcf'
+        self.gnomAD = 'gnomad.exomes.r2.0.2.rename.vcf.gz'
         self.seq_bed = 'agilent_region_OSCC_hg19_rmheader.bed'
         
         ###dir no need to modify
@@ -78,12 +79,15 @@ def work_log(work_data):
     NGStools.SamtoSortbam(p1.refPath, p1.project_N, p1.project_T)
     NGStools.MarkDuplicates(p1.refPath, p1.project_N, p1.project_T)
     NGStools.BaseRecalibrator(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.dbsnp)
-    NGStools.CreatePONforMutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
+    NGStools.NormalforPONsOfMutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
     NGStools.Mutect2(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project)
     NGStools.Mutect2_v3(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.cosmic, p1.dbsnp)
     NGStools.MSIsensor(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.seq_bed)
     ######
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
+    
+    #NGStools.CreatePONforMutect2(p1.refPath, p1.dataPath)
+    #NGStools.Mutect2_PONs(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.dataPath, p1.gnomAD, af=0.00003125)
     
     #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
     #NGStools.ParaSNP(os.path.join(p1.storePath, p1.project), p1.project, mainBox)
