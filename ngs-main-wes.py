@@ -54,6 +54,8 @@ class somaticWES:
 #NGStools.rmSAM()
 #NGStools.getAllVCF()
 
+#NGStools.CreatePONforMutect2(os.getcwd()+'/ref_data', 'subproject_name')
+
 ######rawdataPreprocess
 NGStools.getID()
 NGStools.rawdataRename()
@@ -86,7 +88,6 @@ def work_log(work_data):
     ######
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
     
-    #NGStools.CreatePONforMutect2(p1.refPath, p1.dataPath)
     #NGStools.Mutect2_PONs(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.dataPath, p1.gnomAD, af=0.00003125)
     
     #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
