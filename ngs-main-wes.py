@@ -31,7 +31,7 @@ class somaticWES:
         self.cosmic = 'CosmicAllMutsHeaderSorted.vcf'
         self.gnomAD = 'gnomad.exomes.r2.0.2.rename.vcf.gz'
         self.seq_bed = 'agilent_region_OSCC_hg19_rmheader.bed'
-        self.totalPONs = 'your_total_PONs_name'
+        self.totalPONs = dataPath+'_SomaticPONs.vcf'
         
         ###dir no need to modify
         self.rawdataPath = mainPath+'/'+dataPath
