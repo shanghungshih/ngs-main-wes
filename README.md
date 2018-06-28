@@ -15,11 +15,13 @@ python3 ngs-main-wes.py
 ```
 - - -
 ##### Customizable：
-- genome coordinate：ucsc.hg19.fasta
-- dbSNP：dbsnp_138.hg19.vcf
-- COSMIC：CosmicAllMutsHeaderSorted.vcf
+- tag: wes_v3(docker image: https://hub.docker.com/r/adgh456/ngs-main/)
+- genome coordinate: ucsc.hg19.fasta
+- dbSNP: dbsnp_138.hg19.vcf
+- COSMIC: CosmicAllMutsHeaderSorted.vcf
 - seq_bed: agilent_region_OSCC_hg19_rmheader.bed
-- multi-thread：p = Pool(15)
+- gnomAD: gnomad.exomes.r2.0.2.rename.vcf.gz
+- multi-thread: p = Pool(15)
 - - -
 #### Function：
 - rmSAM: remove sam & sai file to release disk space
