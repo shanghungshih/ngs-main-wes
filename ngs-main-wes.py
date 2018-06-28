@@ -31,6 +31,7 @@ class somaticWES:
         self.cosmic = 'CosmicAllMutsHeaderSorted.vcf'
         self.gnomAD = 'gnomad.exomes.r2.0.2.rename.vcf.gz'
         self.seq_bed = 'agilent_region_OSCC_hg19_rmheader.bed'
+        self.totalPONs = 'your_total_PONs_name'
         
         ###dir no need to modify
         self.rawdataPath = mainPath+'/'+dataPath
@@ -88,7 +89,7 @@ def work_log(work_data):
     ######
     NGStools.CheckVcf(p1.refPath, work_data[0], p1.project, p1.storePath)
     
-    #NGStools.Mutect2_PONs(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.dataPath, p1.gnomAD, af=0.00003125)
+    #NGStools.Mutect2_PONs(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.dataPath, p1.gnomAD, p1.totalPONs, af=0.00003125)
     
     #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
     #NGStools.ParaSNP(os.path.join(p1.storePath, p1.project), p1.project, mainBox)
