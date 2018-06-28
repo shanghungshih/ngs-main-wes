@@ -38,7 +38,7 @@ python3 ngs-main-wes.py
 - SamtoSortbam: transform sam file (sequence alignment map) to bam file (binary alignment map) with picard, and build index with samtools
 - MarkDuplicates: MarkDuplicates and AddOrReplaceReadGroups with picard, and build index with samtools
 - BaseRecalibrator: BaseRecalibrator and ApplyBQSR with GATK4, and build index with samtools
-- CreatePONforMutect2: call variant using Mutect2 (tumor-only mode) without dbSNP and COSMIC with GATK4, and record patient to build Panel of Normal in normals_for_pon_vcf.args
+- NormalforPONsOfMutect2: call variant using Mutect2 (tumor-only mode) without dbSNP and COSMIC with GATK4, and record patient to build Panel of Normal in normals_for_pon_vcf.args
 - Mutect2: call variant using Mutect2 (Paired: Normal and Tumor) without dbSNP and COSMIC with GATK4
 - Mutect2_v3: call variant using mutect2 (Paired: Normal and Tumor) with dbSNP and COSMIC with GATK4
 - CheckVcf: record result (good_report.txt or bad_report.txt)
@@ -48,3 +48,5 @@ python3 ngs-main-wes.py
 - Phial: clinical FDA drug relevence annotation
 (based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
 - ParaSNP: scoring variants in vcf, based on annovar annotation
+- CreatePONforMutect2: generate total vcf from normals of subproject patient
+- Mutect2_PONs: call variant using Mutect2 with PONs and gnomAD
