@@ -387,5 +387,5 @@ def ParaSNP(storePath, num, mainBox):
 def CreatePONforMutect2(refPath, subproject):
     gatk4(refPath, 'gatk CreateSomaticPanelOfNormals --output data/%s_SomaticPONs.vcf --vcfs data/normals_for_pon_vcf.args' %(subproject))
 
-def Mutect2_PONs(refPath, fasta, projectN, projectT, project, subproject, gnomad, af=0.00003125):
-    gatk4(refPath, 'gatk Mutect2 -R data/%s.fasta -I data/%s.recal_reheader.bam -tumor %s -I data/%s.recal_reheader.bam -normal %s --germline-resource data/%s --af-of-alleles-not-in-resource %s --panel-of-normals data/%s_SomaticPONs.vcf -O data/%s.somaticPONs.vcf' %(fasta, projectT, projectT, projectN, projectN, gnomad, af, subproject, project))
+def Mutect2_PONs(refPath, fasta, projectN, projectT, project, subproject, gnomad, totalPONs, af=0.00003125):
+    gatk4(refPath, 'gatk Mutect2 -R data/%s.fasta -I data/%s.recal_reheader.bam -tumor %s -I data/%s.recal_reheader.bam -normal %s --germline-resource data/%s --af-of-alleles-not-in-resource %s --panel-of-normals data/%s -O data/%s.somaticPONs.vcf' %(fasta, projectT, projectT, projectN, projectN, gnomad, af, totalPONs, project))
