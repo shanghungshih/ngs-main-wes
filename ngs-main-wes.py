@@ -6,7 +6,6 @@ Created on Thu May 10 11:07:44 2018
 """
 
 import os
-import sys
 import NGStools
 import time
 from multiprocessing import Pool
