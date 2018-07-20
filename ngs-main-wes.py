@@ -100,6 +100,7 @@ def work_log(work_data):
 def pool_handler():
     p = Pool(15)
     p.map(work_log, work)
+    p.close()
 
 if __name__ == '__main__':
     pool_handler()
