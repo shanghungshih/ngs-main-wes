@@ -49,6 +49,6 @@ python3 ngs-main-wes.py
 - MSIsensor: microsatellite instability
 - Phial: clinical FDA drug relevence annotation
 (based on autoOncotator, please see https://github.com/shanghungshih/autoOncotator)
-- ParaSNP: scoring variants in vcf, based on annovar annotation
+- ParaSNP: scoring variants in vcf, based on annovar annotation（Notes: process in data, not ref_data）
 - CreatePONforMutect2: generate total vcf from normals of subproject patient
 - Mutect2_PONs: call variant using Mutect2 with PONs and gnomAD
