@@ -90,7 +90,7 @@ def work_log(work_data):
     
     #NGStools.Mutect2_PONs(p1.refPath, p1.refGenome, p1.project_N, p1.project_T, p1.project, p1.dataPath, p1.gnomAD, p1.totalPONs, af=0.00003125)
     
-    #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project, p1.project+'.mutect2')
+    #NGStools.Phial(os.path.join(p1.mainPath, 'data'), work_data[0], p1.project)
     #NGStools.ParaSNP(os.path.join(p1.storePath, p1.project), p1.project, mainBox)
     
     endTime = time.time()
